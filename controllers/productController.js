@@ -40,6 +40,28 @@ export function getProducts(req, res) {
     });
 }
 
+
+export function getProductId(req, res) {
+  const productId = req.params.productId;
+
+  Product.findOne({ productId: productId })
+    .then((product) => {
+      if (!product) {
+        return res.status(404).json({
+          message: "Product not found",
+        });
+      }
+      res.json(product);
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "Error fetching product",
+        error: err.message,
+      });
+    });
+}
+
+
 export function deleteProduct(req, res) {
     if(req.user == null) {
         return res.status(403).json({
