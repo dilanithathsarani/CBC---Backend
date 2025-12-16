@@ -8,6 +8,7 @@ import verifyJWT from "./middleware/auth.js";
 import orderRouter from "./routes/orderRouter.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import reviewRouter from "./routes/reviewRouter.js";
 dotenv.config();
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(verifyJWT);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/order",orderRouter);
+app.use("/api/review", reviewRouter);
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
