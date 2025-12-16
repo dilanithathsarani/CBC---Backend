@@ -1,4 +1,4 @@
-import { Review } from "../models/review";
+import Review from '../models/review.js';
 
 // GET all reviews
 export async function getAllReviews(req, res) {
