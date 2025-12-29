@@ -5,14 +5,13 @@ export async function createProduct(req, res) {
     return res.status(403).json({
       message: "You need to login first",
     });
-    return;
   }
 
   if (req.user.role !== "admin") {
     return res.status(403).json({
       message: "You do not have permission to create a product",
     });
-    return;
+  
   }
 
   const product = new Product(req.body);
